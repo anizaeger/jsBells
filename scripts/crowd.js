@@ -39,9 +39,10 @@ define(['createjs'], function() {
 		------------------------------------------------------------------------- */
 		constructor( studio ) {
 			this.studio = studio;
+			this.defChantNum = 6;
 			this.excited = false;
 			this.cheerTween = null;
-			this.defChantNum = 6;
+			this.chanting = null;
 
 			var queue = new createjs.LoadQueue();
 			queue.installPlugin(createjs.Sound);
@@ -76,8 +77,12 @@ define(['createjs'], function() {
 		------------------------------------------------------------------------- */
 		excite() {
 			if ( !this.excited ) {
+				if ( this.chanting != null ) {
+					console.log("Stopping chant: " + this.chanting)
+					window.clearTimeout(this.chanting);
+					this.chanting = null;
+				}
 				this.excited = true;
-				this.endChant();
 				this.beginCheer();
 			}
 		}
@@ -140,7 +145,7 @@ define(['createjs'], function() {
 			this.chantNum--;
 			if ( !this.excited ) {
 				if ( this.chantNum > 0 ) {
-					window.setTimeout( this.doChant.bind(this), 1000);
+					this.chanting = window.setTimeout( this.doChant.bind(this), 1000);
 				}
 				else {
 					this.endChant();
@@ -154,6 +159,8 @@ define(['createjs'], function() {
 											silence the studio.
 		------------------------------------------------------------------------- */
 		endChant() {
+			console.log("endChant()")
+			this.chanting = null;
 			this.chantNum = 0;
 			this.studio.silence();
 		}
