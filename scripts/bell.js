@@ -30,7 +30,7 @@
 /** ------------------------------------------------------------------------- *
  * CLASS:         Bell
  * DESCRIPTION:   Simulates the bell, controlled by the user, which starts
- *                and maintains the action on stage.  When run, the crowd
+ *                and maintains the action on stage.  When rung, the crowd
  *                will be excited, and the guests instigated.
  * -------------------------------------------------------------------------- */
 define(['createjs'], function() {
@@ -59,7 +59,8 @@ define(['createjs'], function() {
 
     /** --------------------------------------------------------------------- *
      * FUNCTION:      Bell::ring
-     * DESCRIPTION:   Ring that Mutha Frakin' Bell!
+     * DESCRIPTION:   Ring that Mutha Frakin' Bell!  Ringing the bell prods
+                      the studio.
      * ---------------------------------------------------------------------- */
     ring() {
       createjs.Sound.play("bell");

@@ -109,7 +109,7 @@ define(['createjs'], function() {
 
     /** --------------------------------------------------------------------- *
      * FUNCTION:      Guests::cussout
-     * DESCRIPTION:   Attempt to cuss, causing a bleep.
+     * DESCRIPTION:   Generate random timer calling Guests::swear().
      * ---------------------------------------------------------------------- */
     cussout( maxTime = this.maxTime()) {
       console.log("cussout(" +maxTime+ ")");
@@ -158,7 +158,8 @@ define(['createjs'], function() {
 
     /** --------------------------------------------------------------------- *
      * FUNCTION:      Guests::swear
-     * DESCRIPTION:   Cuss on stage if swearPcnt roll is met.
+     * DESCRIPTION:   Cuss on stage, thus generating a bleep, if swearPcnt
+                      roll is met.
      * ---------------------------------------------------------------------- */
     swear() {
       this.swearing = null;
