@@ -49,10 +49,13 @@ define([
      * DESCRIPTION:   Construct a new instance of class Studio.
      * ---------------------------------------------------------------------- */
     constructor() {
+      // Objects housed in studio.
       this.bell = new Bell(this);
       this.censor = new Censor(this);
       this.crowd = new Crowd(this);
       this.guests = new Guests(this);
+
+      // Audio Preload Checklist
       this.files = {
         bell: false,
         chant: false,

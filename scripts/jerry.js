@@ -44,7 +44,7 @@ requirejs.config({
     // the HTML page.
     createjs: [
       '//code.createjs.com/1.0.0/createjs.min',
-      'lib/require'
+      'lib/createjs.min'
     ],
     jquery: 'lib/jquery',
     lodash: [

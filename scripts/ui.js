@@ -72,6 +72,7 @@ function setBtn() {
   }
 
   btnSize /= 2;
+  btnSize += "px";
 
   var fightBtn = document.getElementById("fightBtn");
 

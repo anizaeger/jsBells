@@ -64,7 +64,7 @@ define(['createjs'], function() {
      * ---------------------------------------------------------------------- */
     ring() {
       createjs.Sound.play("bell");
-			this.studio.prod();
+      this.studio.prod();
     }
   };
 });
