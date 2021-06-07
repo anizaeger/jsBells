@@ -58,8 +58,6 @@ define([], function() {
         alert( "*** BUG - Osc::constructor()\n" + "Error - " + e );
         this.usingWebAudio = false;
       }
-
-      this.wake();
     }
 
     /** --------------------------------------------------------------------- *
@@ -97,26 +95,6 @@ define([], function() {
           that.bleeping = false;
         }
         this.osc.stop( this.context.currentTime + this.bleepSecs );
-      }
-    }
-
-    /** --------------------------------------------------------------------- *
-     * FUNCTION:      Censor::wake
-     * DESCRIPTION:   Resumes web audio in the event that it gets suspended.
-     * ATTRIBUTION:   https://gist.github.com/laziel/7aefabe99ee57b16081c
-     * ---------------------------------------------------------------------- */
-    wake() {
-      if ( this.usingWebAudio && this.context.state === 'suspended' ) {
-        var resume = function() {
-          this.context.resume();
-          var that = this;
-          setTimeout( function() {
-            if ( that.context.state === 'running' ) {
-              document.body.removeEventListener( 'touchend', resume, false );
-            }
-          }, 0 );
-        };
-        document.body.addEventListener('touchend', resume, false);
       }
     }
   };
