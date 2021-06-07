@@ -92,6 +92,7 @@ define([
      * DESCRIPTION:   Forward bell ring requests from user to bell.
      * ---------------------------------------------------------------------- */
     ring() {
+			this.wake();
       this.bell.ring();
     }
 
@@ -152,5 +153,25 @@ define([
       console.log('Silenced!')
       this.guests.silence();
     }
+
+   /** --------------------------------------------------------------------- *
+    * FUNCTION:      Censor::wake
+    * DESCRIPTION:   Resumes web audio in the event that it gets suspended.
+    * ATTRIBUTION:   https://gist.github.com/laziel/7aefabe99ee57b16081c
+    * ---------------------------------------------------------------------- */
+   wake() {
+     if ( this.usingWebAudio && this.context.state === 'suspended' ) {
+       var resume = function() {
+         this.context.resume();
+         var that = this;
+         setTimeout( function() {
+           if ( that.context.state === 'running' ) {
+             document.body.removeEventListener( 'touchend', resume, false );
+           }
+         }, 0 );
+       };
+       document.body.addEventListener('touchend', resume, false);
+     }
+   }
   };
 })
